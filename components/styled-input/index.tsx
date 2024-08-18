@@ -9,7 +9,7 @@ export default function StyledInput({ placeholder, onChangeText }: StyledInputPr
     return (
 
         <TextInput
-            style={[styles.input, styles.shadow]}
+            style={[styles.input]}
             placeholder={placeholder}
             onChangeText={onChangeText}
         />
@@ -24,11 +24,6 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         borderRadius: 6,
         padding: 10,
+        backgroundColor: 'white',
     },
-
-    shadow: {
-        shadowOffset:{  width: 10,  height: 10,  },
-        shadowColor: 'black',
-        shadowOpacity: 1.0,
-    }
 })

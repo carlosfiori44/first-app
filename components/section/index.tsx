@@ -20,21 +20,20 @@ export default function Section({ texto, imageSrc }: SectionProps) {
     )
 }
 
-const { width, height } = Dimensions.get('window');
-
 const style = StyleSheet.create({
     container: {
         display: "flex",
         flexDirection: "row",
         alignItems: "center",
-        height: 'auto',
+        height: Dimensions.get('window').height*0.10,
         marginVertical: 20
     },
 
     image: {
-        resizeMode: 'center',
-        height: width*0.2,
-        width: height*0.15
+        resizeMode: 'cover',
+        height: '90%',
+        width: '90%',
+        borderRadius: 10
     },
 
     text: {
@@ -45,9 +44,7 @@ const style = StyleSheet.create({
     imageContainer: {
         flex: 1,
         alignItems: 'center',
-        justifyContent: 'center',
-        width: '100%',
-        height: 'auto'
+        justifyContent: 'center'
     },
 
     textContainer: {

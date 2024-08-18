@@ -7,7 +7,8 @@ import StyledTitle from "../components/styled-title";
 export default function Home() {
     const img1 = require('../assets/sections-images/coffee.png');
     const img2 = require('../assets/sections-images/tea.jpg');
-    const img3 = require('../assets/sections-images/lemon.png')
+    const img3 = require('../assets/sections-images/lemon.png');
+    const img4 = require('../assets/sections-images/orange.jpg');
 
     return (
         <View style={style.container}>
@@ -16,6 +17,7 @@ export default function Home() {
                 <Section imageSrc={img1} texto="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat." />
                 <Section imageSrc={img2} texto="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat." />
                 <Section imageSrc={img3} texto="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua." />
+                <Section imageSrc={img4} texto="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua." />
             </ScrollView>
             <StyledButton text="Voltar" color="blue" onClick={() => { router.replace('/') }} />
         </View>

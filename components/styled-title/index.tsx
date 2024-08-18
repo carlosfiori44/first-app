@@ -8,7 +8,7 @@ interface StyledButtonProps extends TextProps{
 export default function StyledTitle({text, color, ...rest}: StyledButtonProps) {
     return(
         <Text
-        style={[style.text]}
+        style={[style.text, {color: color}]}
         {...rest}>
             {text}
         </Text>

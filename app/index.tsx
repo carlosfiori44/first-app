@@ -17,7 +17,7 @@ export default function Login() {
         alt='Logo do projeto, representa um átomo com um circulo no meio e espirais em volta'
         style={styles.logo}
         source={logo} />
-      <StyledTitle text='Faça seu login' />
+      <StyledTitle text='Faça seu login' color='white' />
       <StyledInput placeholder='Digite seu login' onChangeText={() => console.log('foi')} />
       <StyledInput placeholder='Digite sua senha' onChangeText={() => console.log('foi')} />
       <StyledButton text='Enviar' color='blue' onClick={handleLogin} />
@@ -29,9 +29,10 @@ export default function Login() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#16245e',
     alignItems: 'center',
     justifyContent: 'center',
+    
   },
 
   logo: {
