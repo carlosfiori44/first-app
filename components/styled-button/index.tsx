@@ -1,4 +1,5 @@
-import { Text, Pressable, StyleSheet } from "react-native";
+import { StyleSheet } from "react-native";
+import { Button, ButtonText } from "../ui/button";
 
 interface StyledButtonProps {
     text: string
@@ -9,9 +10,9 @@ interface StyledButtonProps {
 
 export default function StyledButton({text, onClick, color, ...rest}: StyledButtonProps) {
     return(
-        <Pressable style={[style.button, {backgroundColor: color ? color : "black"}, {...rest}]} onPress={onClick}>
-            <Text style={[style.text, {}]}>{text}</Text>
-        </Pressable>
+        <Button style={[style.button, {backgroundColor: color ? color : "black"}, {...rest}]} onPress={onClick}>
+            <ButtonText>{text}</ButtonText>
+        </Button>
     )
 }
 
@@ -20,23 +21,5 @@ const style = StyleSheet.create({
         margin: 5,
         alignItems: 'center',
         justifyContent: 'center',
-        paddingVertical: 12,
-        paddingHorizontal: 32,
-        borderRadius: 4,
-        elevation: 3
-    },
-
-    text: {
-        fontSize: 16,
-        lineHeight: 21,
-        fontWeight: 'bold',
-        letterSpacing: 0.25,
-        color: 'white',
-    },
-
-    shadow: {
-        shadowOffset:{  width: 10,  height: 10,  },
-        shadowColor: 'black',
-        shadowOpacity: 1.0,
     }
 })

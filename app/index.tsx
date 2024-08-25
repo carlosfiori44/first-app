@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { Image, StyleSheet, Text, View } from 'react-native';
+import { Image, StyleSheet, View } from 'react-native';
 import StyledInput from '../components/styled-input';
 import StyledButton from '../components/styled-button';
 import { router } from 'expo-router';
@@ -20,7 +20,7 @@ export default function Login() {
       <StyledTitle text='Faça seu login' color='white' />
       <StyledInput placeholder='Digite seu login' onChangeText={() => console.log('foi')} />
       <StyledInput placeholder='Digite sua senha' onChangeText={() => console.log('foi')} />
-      <StyledButton text='Enviar' color='blue' onClick={handleLogin} />
+      <StyledButton text='Enviar' color='#000000' onClick={handleLogin} />
       <StatusBar style="auto" />
     </View>
   );
@@ -32,7 +32,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#16245e',
     alignItems: 'center',
     justifyContent: 'center',
-    
   },
 
   logo: {
