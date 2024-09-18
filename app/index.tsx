@@ -4,12 +4,12 @@ import StyledInput from '../components/styled-input';
 import StyledButton from '../components/styled-button';
 import { router } from 'expo-router';
 import StyledTitle from '../components/styled-title';
+import { useState } from 'react';
+import { useAuth } from '@/context/auth';
 
 export default function Login() {
+  const auth = useAuth();
   const logo = require('../assets/logo/logoImage.png')
-  const handleLogin = () => {
-    router.replace('home');
-  }
 
   return (
     <View style={styles.container}>
@@ -18,9 +18,9 @@ export default function Login() {
         style={styles.logo}
         source={logo} />
       <StyledTitle text='Faça seu login' color='white' />
-      <StyledInput placeholder='Digite seu login' onChangeText={() => console.log('foi')} />
-      <StyledInput placeholder='Digite sua senha' onChangeText={() => console.log('foi')} />
-      <StyledButton text='Enviar' color='#000000' onClick={handleLogin} />
+      <StyledInput placeholder='Digite seu login' onChangeText={(data) => auth.setUser({...auth.user, email: data})} />
+      <StyledInput placeholder='Digite sua senha' onChangeText={(data) => auth.setUser({...auth.user, password: data})} />
+      <StyledButton text='Enviar' color='#3399FF' onClick={auth.handleLogin} />
       <StatusBar style="auto" />
     </View>
   );
@@ -29,7 +29,7 @@ export default function Login() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#16245e',
+    backgroundColor: '#16245E',
     alignItems: 'center',
     justifyContent: 'center',
   },
