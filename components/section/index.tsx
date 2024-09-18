@@ -38,13 +38,14 @@ const style = StyleSheet.create({
 
     text: {
         fontSize: 12,
-        textAlign: 'justify'
+        textAlign: 'justify',        
     },
 
     imageContainer: {
         flex: 1,
         alignItems: 'center',
-        justifyContent: 'center'
+        justifyContent: 'center',
+        textAlign: 'center'
     },
 
     textContainer: {
