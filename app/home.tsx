@@ -1,6 +1,6 @@
 import { ScrollView, StyleSheet, View } from "react-native";
 import StyledButton from "../components/styled-button";
-import { router } from "expo-router";
+import { Link, router } from "expo-router";
 import Section from "../components/section";
 import StyledTitle from "../components/styled-title";
 import { useEffect, useState } from "react";
@@ -28,7 +28,9 @@ export default function Home() {
     return (
         <View style={style.container}>
             <StyledTitle text="Lista de itens" />
-            <ScrollView >
+            <Link href={'/sensors'}>Sensores</Link>
+            <Link href={'/camera'}>Camera</Link>
+            <ScrollView>
                 {
                     posts.map((post) => (
                         <Section key={post.id} texto={post.title} />
