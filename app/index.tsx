@@ -2,9 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import { Image, StyleSheet, View } from 'react-native';
 import StyledInput from '../components/styled-input';
 import StyledButton from '../components/styled-button';
-import { router } from 'expo-router';
 import StyledTitle from '../components/styled-title';
-import { useState } from 'react';
 import { useAuth } from '@/context/auth';
 
 export default function Login() {

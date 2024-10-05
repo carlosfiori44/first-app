@@ -30,6 +30,7 @@ export default function Home() {
             <StyledTitle text="Lista de itens" />
             <Link href={'/sensors'}>Sensores</Link>
             <Link href={'/camera'}>Camera</Link>
+            <Link href={'/profile'}>Tabs</Link>
             <ScrollView>
                 {
                     posts.map((post) => (

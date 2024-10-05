@@ -1,38 +1,67 @@
 import StyledButton from "@/components/styled-button";
-import { Text } from "@/components/ui/text";
+import { Avatar, AvatarImage } from "@/components/ui/avatar";
 import { CameraView, useCameraPermissions } from "expo-camera"
-import { useState } from "react";
-import { Image, View } from "react-native";
+import { useEffect, useState } from "react";
+import { View } from "react-native";
+import * as FileSystem from 'expo-file-system'
+import { ScrollView } from "react-native";
 
 export default function Camera() {
     const [perm, reqPerm] = useCameraPermissions();
-    const [link, setLink] = useState<string>('');
+    const [photo, setPhoto] = useState<string | null>(null);
+    const [photos, setPhotos] = useState<string[]>([]);
+
+    const photoFileName = FileSystem.documentDirectory + 'photo.jpg'
+
     let camera: CameraView | null;
 
     const takePicture = async () => {
         if (perm) {
             const photo = await camera?.takePictureAsync();
-            console.log(photo);
 
-            if (photo) {
-                setLink(photo.uri);
+            if (photo?.uri) {
+                setPhotos([...photos, photo.uri]);
+
+                setPhoto(photo.uri);
+
+                await FileSystem.copyAsync({
+                    from: photo.uri,
+                    to: photoFileName
+                })
             }
         } else {
-            alert('Not')
+            alert('No permission')
         }
     }
+
+    const verifyPhoto = async () => {
+        const file = await FileSystem.getInfoAsync(photoFileName);
+
+        if (file.exists) {
+            setPhoto(file.uri);
+        }
+    }
+
+    useEffect(() => {
+        verifyPhoto();
+    }, []);
 
     if (!perm) return <></>
 
     return (
-        <View>
+        <View style={{ flex: 1, alignItems: 'center', }}>
             <CameraView facing="front" ref={(ref) => { camera = ref }}
                 style={{ width: 300, height: 300 }}
             />
             <StyledButton text="Tirar foto" onClick={takePicture} />
-            <Text>Teste</Text>
-            <Image source={link ? {uri: link} : require('../assets/logo/logoImage.png')} 
-                   style={{ resizeMode: 'cover', height: 100, width: 100}} />
+            {/* {photo && <Avatar style={{ width: 350, height: 350 }}><AvatarImage source={{ uri: photo }} /></Avatar>} */}
+            <ScrollView>
+                <View style={{flex: 1, direction: 'ltr'}}>
+                    {photos && photos.map((p) => (
+                        <Avatar size="2xl"><AvatarImage source={{ uri: p }} /></Avatar>
+                    ))}
+                </View>
+            </ScrollView>
         </View>
     )
 }
